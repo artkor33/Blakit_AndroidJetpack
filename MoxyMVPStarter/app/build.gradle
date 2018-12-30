@@ -1,0 +1,85 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+apply plugin: 'realm-android'
+
+
+android {
+    compileSdkVersion versions.compileSdk
+    buildToolsVersion versions.buildTools
+    defaultConfig {
+        applicationId "com.moxymvp.starter"
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.compileSdk
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    testImplementation "junit:junit:${versions.junit}"
+    testImplementation "com.nhaarman:mockito-kotlin:${versions.mockitoKotlin}"
+    testImplementation "org.robolectric:robolectric:${versions.robolectric}"
+    testImplementation "com.squareup.okhttp3:mockwebserver:${versions.okHttp}"
+
+    androidTestImplementation "junit:junit:${versions.junit}"
+    androidTestImplementation "com.nhaarman:mockito-kotlin:${versions.mockitoKotlin}"
+    androidTestImplementation "com.android.support.test:runner:${versions.atsl}"
+    androidTestImplementation "com.android.support.test:rules:${versions.atsl}"
+
+    implementation "androidx.appcompat:appcompat:${versions.appCompat}"
+    implementation "androidx.legacy:legacy-support-v4:${versions.support}"
+    implementation "androidx.constraintlayout:constraintlayout:${versions.constraintLayout}"
+    implementation "androidx.dynamicanimation:dynamicanimation:${versions.dynamicAnimation}"
+    implementation "com.google.android.material:material:${versions.material}"
+
+    implementation "com.google.dagger:dagger:${versions.dagger}"
+    kapt "com.google.dagger:dagger-compiler:${versions.dagger}"
+
+    implementation "com.google.code.gson:gson:${versions.gson}"
+
+    implementation "io.reactivex.rxjava2:rxjava:${versions.rxJava}"
+    implementation "io.reactivex.rxjava2:rxandroid:${versions.rxAndroid}"
+    implementation "io.reactivex.rxjava2:rxkotlin:${versions.rxKotlin}"
+
+    implementation "com.squareup.retrofit2:retrofit:${versions.retrofit}"
+    implementation "com.squareup.retrofit2:converter-gson:${versions.retrofit}"
+    implementation "com.squareup.okhttp3:okhttp:${versions.okHttp}"
+    implementation "com.squareup.picasso:picasso:${versions.picasso}"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:${versions.retrofit}"
+    implementation "com.squareup.okhttp3:logging-interceptor:${versions.okHttp}"
+    implementation "com.jakewharton.timber:timber:${versions.timber}"
+
+    implementation "com.arello-mobile:moxy:${versions.moxy}"
+    implementation "com.arello-mobile:moxy-compiler:${versions.moxy}"
+    implementation "com.arello-mobile:moxy-android:${versions.moxy}"
+    implementation "com.arello-mobile:moxy-app-compat:${versions.moxy}"
+    implementation project(':moxy_mvp')
+    kapt "com.arello-mobile:moxy-compiler:${versions.moxy}"
+    annotationProcessor "com.arello-mobile:moxy-compiler:${versions.moxy}"
+
+    implementation "io.realm:android-adapters:${versions.realmAdapters}"
+    implementation "org.jetbrains.anko:anko-commons:${versions.anko}"
+
+}
+kapt {
+    generateStubs = true
+}
+repositories {
+    mavenCentral()
+    maven { url 'https://maven.google.com' }
+}

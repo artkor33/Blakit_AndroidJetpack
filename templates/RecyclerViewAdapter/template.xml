@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<template
+    format="4"
+    revision="1"
+    name="RealmRecylerView adapter"
+    description="RealmRecyclerViewAdapter constructor"
+    minApi="7"
+    minBuildApi="8">
+
+    <category value="RecyclerViewAdapter" />
+
+    <parameter
+        id="includeRealmAdapter"
+        name="Add realm adapter?"
+        type="boolean"
+        default="true"
+        help="Generate a realm adapter" />
+
+    <parameter
+        id="adapterName"
+        name="Adapter Name"
+        type="string"
+        constraints="class|nonempty|unique"
+        default="BlankRealmAdapter"
+        help="The name of the adapter class to create" />
+        
+    <parameter
+        id="includeLayout"
+        name="Create layout XML?"
+        type="boolean"
+        default="true"
+        help="Generate a layout XML for the item" />
+
+    <parameter
+        id="itemLayoutName"
+        name="Item Layout Name"
+        type="string"
+        constraints="layout|nonempty|unique"
+        default="item_blank"
+        visibility="includeLayout"
+        help="The name of the layout to create" />
+
+    <parameter
+        id="viewHolderName"
+        name="ViewHolder Name"
+        type="string"
+        constraints="class|nonempty|unique"
+        default="BlankViewHolder"
+        suggest="ViewHolder"
+        help="The name of the view interface to create" />
+
+   <parameter
+        id="includeItems"
+        name="Add items to adapter?"
+        type="boolean"
+        default="true"
+        help="Generate a items for adapter and viewHolder" />
+	
+   <parameter
+        id="modelName"
+        name="RealmModel Name"
+        type="string"
+        constraints="class|nonempty|unique"
+        default="BlankModel"
+        suggest="Realm"
+        help="The name of the realm model" />
+	
+    <thumbs>
+        <thumb>template_moxy_fragment.png</thumb>
+    </thumbs>
+
+    <globals file="globals.xml.ftl" />
+    <execute file="recipe.xml.ftl" />
+
+</template>
